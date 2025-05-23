@@ -1,6 +1,7 @@
 import os
 import mysql.connector
 from dotenv import load_dotenv
+from tabulate import tabulate
 
 load_dotenv()
 
@@ -25,4 +26,5 @@ def fetch_data(query):
 # Example usage:
 if __name__ == "__main__":
     data = fetch_data("SELECT * FROM por_extracted_data LIMIT 10")
-    print(data)
+    table = tabulate(data, headers="keys", tablefmt="psql")
+    print(table)
